@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 @Slf4j
 @ControllerAdvice
@@ -19,7 +18,7 @@ import java.util.NoSuchElementException;
 public class GlobalExceptionHandler {
     private final ObjectMapper objectMapper;
 
-    @ExceptionHandler(value = {NoSuchElementException.class})
+    @ExceptionHandler(value = {IllegalArgumentException.class})
     public void exceptionHandler(Exception e, HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setStatus(HttpStatus.BAD_REQUEST.value());
         res.setContentType("application/json");
